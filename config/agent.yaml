@@ -1,3 +1,0 @@
-especialista_compliance:
-  description: "Agent especializado em compliance regulatório farmacêutico"
-  model: "gemini-1.5"

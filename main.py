@@ -1,30 +1,23 @@
-from crey import ComplianceCrew
-import streamlit as st
+from crew import ComplianceCrew
 
 
-def run_compliance_assistant(pergunta: str):
+def run_compliance_assistant(question: str):
+    """
+    Runs the Compliance AI Assistant with the given question.
+
+    Args:
+        question (str): The compliance question to be answered.
+
+    Returns:
+        str: The response from the AI compliance agent.
+    """
+    if not question.strip():
+        return "⚠️ Please enter a valid question."
+
+    # Initialize the ComplianceCrew
     crew_instance = ComplianceCrew()
 
-    result = crew_instance.crew().kickoff(inputs={"pergunta": pergunta})
+    # Run the AI Compliance Assistant
+    result = crew_instance.crew().kickoff(inputs={"question": question})
 
     return result
-
-
-def main():
-    st.title("Compliance Assistant")
-    pergunta = st.text_input("Pergunta sobre compliance")
-    if st.button("Enviar"):
-        if not pergunta:
-            st.warning("Escreva uma pergunta antes de enviar.")
-            return
-        with st.spinner("Processando..."):
-            try:
-                resposta = run_compliance_assistant(pergunta)
-                st.success("Resposta recebida")
-                st.write(resposta)
-            except Exception as e:
-                st.error(f"Erro ao executar: {e}")
-
-
-if __name__ == "__main__":
-    main()

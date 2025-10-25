@@ -12,10 +12,10 @@ pip install -r requirements.txt
 ### 2. Configurar variáveis de ambiente
 Crie um arquivo `.env` na raiz do projeto com uma das seguintes configurações:
 
-**Opção 1: Google Gemini (recomendado)**
+**Opção 1: Google Gemini 2.5 Flash (recomendado)**
 ```
 GEMINI_API_KEY=sua_chave_gemini_aqui
-GEMINI_MODEL=gemini-1.5
+GEMINI_MODEL=gemini-2.0-flash-exp
 ```
 
 **Opção 2: OpenAI**
@@ -23,6 +23,12 @@ GEMINI_MODEL=gemini-1.5
 OPENAI_API_KEY=sua_chave_openai_aqui
 OPENAI_MODEL=gpt-4o-mini
 ```
+
+**Como obter as chaves:**
+- **Google Gemini**: Acesse [Google AI Studio](https://makersuite.google.com/app/apikey)
+- **OpenAI**: Acesse [OpenAI Platform](https://platform.openai.com/api-keys)
+
+**Dica**: Use o arquivo `config_example.env` como modelo!
 
 ### 3. Executar o aplicativo
 ```bash

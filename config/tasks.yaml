@@ -1,15 +1,13 @@
-responder_pergunta_compliance:
+answer_compliance_question:
   description: >
-    Responder perguntas relacionadas à conformidade regulatória em indústrias farmacêuticas,
-    fornecendo orientações claras e práticas para garantir que as organizações estejam em conformidade
-    com todas as normas legais relevantes pautadas nas diretrizes da ANVISA.
+    Answer compliance-related questions based on ANVISA, BPF, and GMP regulations.
+    Provide the most relevant section from the regulations and summarize it clearly.
 
-  inputs:
-    pergunta: "(pergunta)"
+    **Question:**
+    {question}
 
   expected_output: >
-    Uma resposta detalhada e prática que aborde a pergunta sobre conformidade regulatória,
-    incluindo referências a leis e regulamentos aplicáveis, melhores práticas e recomendações
-    específicas para garantir a conformidade na indústria farmacêutica.
-
-  agent: especialista_compliance
+    A precise and well-structured response based on the most relevant compliance regulations.
+    If applicable, cite the specific section from the BPF, RDC 301, or RDC 658.
+    
+  agent: pharma_compliance_expert
