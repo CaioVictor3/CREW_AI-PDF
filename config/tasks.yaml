@@ -1,0 +1,15 @@
+responder_pergunta_compliance:
+  description: >
+    Responder perguntas relacionadas à conformidade regulatória em indústrias farmacêuticas,
+    fornecendo orientações claras e práticas para garantir que as organizações estejam em conformidade
+    com todas as normas legais relevantes pautadas nas diretrizes da ANVISA.
+
+  inputs:
+    pergunta: "(pergunta)"
+
+  expected_output: >
+    Uma resposta detalhada e prática que aborde a pergunta sobre conformidade regulatória,
+    incluindo referências a leis e regulamentos aplicáveis, melhores práticas e recomendações
+    específicas para garantir a conformidade na indústria farmacêutica.
+
+  agent: especialista_compliance
