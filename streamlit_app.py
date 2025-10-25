@@ -1,31 +1,32 @@
 import streamlit as st
-from main import run_compliance_assistant
+from main import executar_assistente_defesa_consumidor
 
-st.title("🔎 Pharma Compliance AI Assistant")
+st.title("🛡️ Assistente de Defesa do Consumidor")
 st.write(
-    "This AI helps you with **ANVISA (Brazil) GMP Compliance** based on RDC 301, RDC 658, and BPF regulations."
+    "Este assistente de IA ajuda você com questões sobre **Código de Defesa do Consumidor (CDC)** brasileiro"
+    " baseado na Lei 8.078/1990 e regulamentações relacionadas."
 )
 
 # Sidebar for user selection
 with st.sidebar:
-    st.header("Select a Task:")
+    st.header("Selecione uma Tarefa:")
     task_type = (
-        "Answer Compliance Question"  # Since we have only one task, it's pre-selected
+        "Responder Pergunta sobre Direitos do Consumidor"  # Como temos apenas uma tarefa, ela é pré-selecionada
     )
 
-    # Input field for user question
-    user_input = st.text_area("Enter your compliance question:")
+    # Campo de entrada para a pergunta do usuário
+    user_input = st.text_area("Digite sua pergunta sobre direitos do consumidor:")
 
-# Run the AI Compliance Assistant when the user clicks the button
-if st.button("Run Compliance Check 🚀"):
+# Executa o Assistente de Defesa do Consumidor quando o usuário clica no botão
+if st.button("Executar Consulta de Defesa do Consumidor 🚀"):
     if not user_input.strip():
-        st.warning("⚠️ Please enter your question before running.")
+        st.warning("⚠️ Por favor, digite sua pergunta antes de executar.")
     else:
-        st.write("⏳ Processing your request... Please wait.")
+        st.write("⏳ Processando sua solicitação... Aguarde.")
 
-        # ✅ Call the function from main.py
-        result = run_compliance_assistant(user_input)
+        # ✅ Chama a função do main.py
+        resultado = executar_assistente_defesa_consumidor(user_input)
 
-        # Display the AI response
-        st.subheader("✅ Compliance AI Response:")
-        st.write(result)
+        # Exibe a resposta da IA
+        st.subheader("✅ Resposta do Assistente de Defesa do Consumidor:")
+        st.write(resultado)

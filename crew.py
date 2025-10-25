@@ -2,10 +2,8 @@ from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
 
-# Knowledge sources
-file1 = PDFKnowledgeSource(file_paths=["file.pdf"])
-file2 = PDFKnowledgeSource(file_paths=["file2.pdf"])
-file3 = PDFKnowledgeSource(file_paths=["file3.pdf"])
+# Fontes de conhecimento
+arquivo1 = PDFKnowledgeSource(file_paths=["file1.pdf"])
 
 
 llm = LLM(
@@ -16,35 +14,35 @@ llm = LLM(
 
 
 @CrewBase
-class ComplianceCrew:
+class EquipeDefesaConsumidor:
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
 
     @agent
-    def pharma_compliance_expert(self) -> Agent:
+    def especialista_defesa_consumidor(self) -> Agent:
         return Agent(
-            config=self.agents_config["pharma_compliance_expert"],
+            config=self.agents_config["especialista_defesa_consumidor"],
             verbose=True,
             tools=[],
             llm=llm,
         )
 
     @task
-    def answer_compliance_question(self) -> Task:
+    def responder_pergunta_consumidor(self) -> Task:
         return Task(
-            config=self.tasks_config["answer_compliance_question"],
+            config=self.tasks_config["responder_pergunta_consumidor"],
         )
 
     @crew
-    def crew(self) -> Crew:
-        """Creates the MQuestKnowledge crew"""
+    def equipe(self) -> Crew:
+        """Cria a equipe de Defesa do Consumidor"""
 
         return Crew(
-            agents=[self.pharma_compliance_expert()],
+            agents=[self.especialista_defesa_consumidor()],
             tasks=[
-                self.answer_compliance_question(),
+                self.responder_pergunta_consumidor(),
             ],
             process=Process.sequential,
             verbose=True,
-            knowledge_sources=[file1, file2, file3],
+            knowledge_sources=[arquivo1],
         )

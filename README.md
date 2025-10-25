@@ -1,6 +1,6 @@
-# Assistente de Compliance Farmacêutico
+# 🛡️ Assistente de Defesa do Consumidor
 
-Este projeto utiliza CrewAI e Streamlit para criar um assistente inteligente que responde perguntas sobre compliance regulatório farmacêutico baseado em documentos da ANVISA.
+Este projeto utiliza CrewAI e Streamlit para criar um assistente inteligente que responde perguntas sobre o **Código de Defesa do Consumidor (CDC)** brasileiro baseado na Lei 8.078/1990 e regulamentações relacionadas.
 
 ## 🚀 Como executar
 
@@ -28,21 +28,23 @@ OPENAI_MODEL=gpt-4o-mini
 - **Google Gemini**: Acesse [Google AI Studio](https://makersuite.google.com/app/apikey)
 - **OpenAI**: Acesse [OpenAI Platform](https://platform.openai.com/api-keys)
 
-**Dica**: Use o arquivo `config_example.env` como modelo!
+**Dica**: Use o arquivo `env.example` como modelo!
 
 ### 3. Executar o aplicativo
 ```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 O aplicativo estará disponível em: http://localhost:8501
 
 ## 📁 Estrutura do projeto
 
-- `app.py` - Interface Streamlit principal
+- `streamlit_app.py` - Interface Streamlit principal
 - `main.py` - Lógica principal do assistente
-- `crey.py` - Configuração do CrewAI
+- `crew.py` - Configuração do CrewAI
 - `config/` - Configurações dos agentes e tarefas
+  - `agents.yaml` - Configuração do especialista em defesa do consumidor
+  - `tasks.yaml` - Configuração das tarefas de resposta
 - `knowledge/` - Documentos PDF para análise
 
 ## 🔧 Configuração
@@ -62,20 +64,38 @@ O aplicativo estará disponível em: http://localhost:8501
 ## 📚 Documentos suportados
 
 O assistente analisa automaticamente os seguintes documentos na pasta `knowledge/`:
-- `file.pdf`
-- `rdc0044_17_08_2009.pdf`
-- `tema-7-21.pdf`
+- `file1.pdf` - Documento principal sobre Código de Defesa do Consumidor
 
 ## 🎯 Funcionalidades
 
-- Interface web intuitiva
-- Análise de documentos PDF
-- Respostas baseadas em conhecimento específico
-- Suporte a múltiplos modelos de LLM
-- Configuração flexível de agentes
+- **Interface web intuitiva** em português
+- **Análise de documentos PDF** sobre direitos do consumidor
+- **Respostas especializadas** baseadas no CDC brasileiro
+- **Suporte a múltiplos modelos de LLM** (Gemini e OpenAI)
+- **Configuração flexível** de agentes e tarefas
+- **Orientação prática** sobre direitos do consumidor
+
+## 🛡️ Especialização
+
+O assistente é especializado em:
+- **Código de Defesa do Consumidor (Lei 8.078/1990)**
+- **Direitos básicos do consumidor**
+- **Responsabilidade do fornecedor**
+- **Práticas comerciais**
+- **Contratos de consumo**
+- **Mecanismos de defesa**
 
 ## ⚠️ Notas importantes
 
 - Certifique-se de ter uma chave de API válida configurada
 - Os documentos PDF devem estar na pasta `knowledge/`
 - O primeiro uso pode demorar um pouco para processar os documentos
+- O assistente fornece orientações gerais e não substitui consultoria jurídica profissional
+
+## 🔍 Exemplos de uso
+
+- "Quais são os direitos básicos do consumidor?"
+- "Como proceder quando um produto apresenta defeito?"
+- "O que fazer se o fornecedor não cumpre o prazo de entrega?"
+- "Quais são as práticas comerciais abusivas?"
+- "Como funciona a responsabilidade do fornecedor por vícios do produto?"

@@ -1,13 +1,15 @@
-answer_compliance_question:
+responder_pergunta_consumidor:
   description: >
-    Answer compliance-related questions based on ANVISA, BPF, and GMP regulations.
-    Provide the most relevant section from the regulations and summarize it clearly.
+    Responda questões relacionadas ao Código de Defesa do Consumidor (CDC) brasileiro.
+    Forneça orientação clara sobre direitos do consumidor, responsabilidades do fornecedor,
+    práticas comerciais e mecanismos de defesa disponíveis.
 
-    **Question:**
+    **Pergunta:**
     {question}
 
   expected_output: >
-    A precise and well-structured response based on the most relevant compliance regulations.
-    If applicable, cite the specific section from the BPF, RDC 301, or RDC 658.
+    Uma resposta precisa e bem estruturada baseada no Código de Defesa do Consumidor
+    e regulamentações relacionadas. Quando aplicável, cite os artigos específicos do CDC
+    e forneça orientações práticas sobre como proceder.
     
-  agent: pharma_compliance_expert
+  agent: especialista_defesa_consumidor

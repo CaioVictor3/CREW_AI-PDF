@@ -1,23 +1,23 @@
-from crew import ComplianceCrew
+from crew import EquipeDefesaConsumidor
 
 
-def run_compliance_assistant(question: str):
+def executar_assistente_defesa_consumidor(pergunta: str):
     """
-    Runs the Compliance AI Assistant with the given question.
+    Executa o Assistente de Defesa do Consumidor com a pergunta fornecida.
 
     Args:
-        question (str): The compliance question to be answered.
+        pergunta (str): A pergunta sobre direitos do consumidor a ser respondida.
 
     Returns:
-        str: The response from the AI compliance agent.
+        str: A resposta do agente especialista em defesa do consumidor.
     """
-    if not question.strip():
-        return "⚠️ Please enter a valid question."
+    if not pergunta.strip():
+        return "⚠️ Por favor, digite uma pergunta válida."
 
-    # Initialize the ComplianceCrew
-    crew_instance = ComplianceCrew()
+    # Inicializa a EquipeDefesaConsumidor
+    instancia_equipe = EquipeDefesaConsumidor()
 
-    # Run the AI Compliance Assistant
-    result = crew_instance.crew().kickoff(inputs={"question": question})
+    # Executa o Assistente de Defesa do Consumidor
+    resultado = instancia_equipe.equipe().kickoff(inputs={"question": pergunta})
 
-    return result
+    return resultado
