@@ -1,23 +1,34 @@
-from crewai import Agent, Crew, Process, Task, LLM
+from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
+from crewai_tools import PDFSearchTool
 import os
+from langchain_google_generativeai import ChatGoogleGenerativeai
 
 from dotenv import load_dotenv
 load_dotenv()
 
 os.environ["GEMINI_API_KEY"] = os.getenv("GEMINI_API_KEY")
-os.environ["GEMINI_MODEL"] = os.getenv("GEMINI_MODEL")
-# os.environ["OPENAI_API_BASE"] = "https://api.your-provider.com/v1"
-# os.environ["OPENAI_MODEL_NAME"] = os.getenv("OPENAI_MODEL_NAME")
 
-llm = LLM(
-    model="gemini-1.5-pro",
-    temperature=0,
-    max_tokens=1500,
+llm = ChatGoogleGenerativeai(model="gemini-1.5-flash", verbose=True, temperature=0)
+
+search_tool = PDFSearchTool(
+    pdf='knowledge/file1.pdf',
+    config=dict(
+        llm=dict(
+            provider="google",
+            config=dict(
+                model="gemini-1.5-flash",
+            ),
+        ),
+        embedder=dict(
+            provider="google",
+            config=dict(
+                model="models/embedding-001",
+                task_type="retrieval_document",
+            ),
+        ),
+    )
 )
-
-arquivo1 = PDFKnowledgeSource(file_paths=["knowledge/file1.pdf"])
 
 @CrewBase
 class EquipeDefesaConsumidor:
@@ -29,7 +40,7 @@ class EquipeDefesaConsumidor:
         return Agent(
             config=self.agents_config["especialista_defesa_consumidor"],
             verbose=True,
-            tools=[],
+            tools=[search_tool],
             llm=llm,
         )
 
@@ -50,5 +61,4 @@ class EquipeDefesaConsumidor:
             ],
             process=Process.sequential,
             verbose=True,
-            knowledge_sources=[arquivo1],
         )
