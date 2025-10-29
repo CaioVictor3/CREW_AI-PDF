@@ -1,17 +1,22 @@
 from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
+import os
 
-# Fontes de conhecimento
-arquivo1 = PDFKnowledgeSource(file_paths=["file1.pdf"])
+from dotenv import load_dotenv
+load_dotenv()
 
+os.environ["GEMINI_API_KEY"] = os.getenv("GEMINI_API_KEY")
+# os.environ["OPENAI_API_BASE"] = "https://api.your-provider.com/v1"
+# os.environ["OPENAI_MODEL_NAME"] = os.getenv("OPENAI_MODEL_NAME")
 
 llm = LLM(
-    model="openai/gpt-3.5-turbo",
+    model="gemini/gemini-2.5-flash",
     temperature=0,
     max_tokens=1500,
 )
 
+arquivo1 = PDFKnowledgeSource(file_paths=["file1.pdf"])
 
 @CrewBase
 class EquipeDefesaConsumidor:

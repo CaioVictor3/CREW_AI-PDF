@@ -1,6 +1,7 @@
 from crew import EquipeDefesaConsumidor
 
 
+
 def executar_assistente_defesa_consumidor(pergunta: str):
     """
     Executa o Assistente de Defesa do Consumidor com a pergunta fornecida.
@@ -14,10 +15,10 @@ def executar_assistente_defesa_consumidor(pergunta: str):
     if not pergunta.strip():
         return "⚠️ Por favor, digite uma pergunta válida."
 
-    # Inicializa a EquipeDefesaConsumidor
+
     instancia_equipe = EquipeDefesaConsumidor()
 
-    # Executa o Assistente de Defesa do Consumidor
+
     resultado = instancia_equipe.equipe().kickoff(inputs={"question": pergunta})
 
     return resultado

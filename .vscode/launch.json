@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Streamlit: Run and Debug streamlit_app.py",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit.web.cli",
+            "args": [
+                "run",
+                "${workspaceFolder}/streamlit_app.py"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
