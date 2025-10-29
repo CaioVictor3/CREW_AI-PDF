@@ -7,16 +7,17 @@ from dotenv import load_dotenv
 load_dotenv()
 
 os.environ["GEMINI_API_KEY"] = os.getenv("GEMINI_API_KEY")
+os.environ["GEMINI_MODEL"] = os.getenv("GEMINI_MODEL")
 # os.environ["OPENAI_API_BASE"] = "https://api.your-provider.com/v1"
 # os.environ["OPENAI_MODEL_NAME"] = os.getenv("OPENAI_MODEL_NAME")
 
 llm = LLM(
-    model="gemini/gemini-2.5-flash",
+    model="gemini-1.5-pro",
     temperature=0,
     max_tokens=1500,
 )
 
-arquivo1 = PDFKnowledgeSource(file_paths=["file1.pdf"])
+arquivo1 = PDFKnowledgeSource(file_paths=["knowledge/file1.pdf"])
 
 @CrewBase
 class EquipeDefesaConsumidor:

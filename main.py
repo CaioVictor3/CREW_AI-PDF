@@ -13,7 +13,7 @@ def executar_assistente_defesa_consumidor(pergunta: str):
         str: A resposta do agente especialista em defesa do consumidor.
     """
     if not pergunta.strip():
-        return "⚠️ Por favor, digite uma pergunta válida."
+        return "Por favor, digite uma pergunta válida."
 
 
     instancia_equipe = EquipeDefesaConsumidor()
