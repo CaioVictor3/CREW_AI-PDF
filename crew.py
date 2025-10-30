@@ -6,13 +6,12 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-os.environ["GEMINI_API_KEY"] = os.getenv("GEMINI_API_KEY")
-os.environ["GEMINI_MODEL"] = os.getenv("GEMINI_MODEL")
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 # os.environ["OPENAI_API_BASE"] = "https://api.your-provider.com/v1"
 # os.environ["OPENAI_MODEL_NAME"] = os.getenv("OPENAI_MODEL_NAME")
 
 llm = LLM(
-    model="gemini-1.5-pro",
+    model="openai/gpt-4.1-mini",
     temperature=0,
     max_tokens=1500,
 )
